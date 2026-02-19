@@ -4,10 +4,10 @@ import questionsData from '../data/questions.json';
 export const useGameLogic = () => {
   const [currentLevel, setCurrentLevel] = useState(1);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [gameState, setGameState] = useState('playing'); // playing, checking, won, lost
+  const [gameState, setGameState] = useState('playing'); 
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [hiddenAnswers, setHiddenAnswers] = useState([]);
-  const [activeModal, setActiveModal] = useState(null); // 'phone' o 'public'
+  const [activeModal, setActiveModal] = useState(null); 
   const [publicData, setPublicData] = useState(null);
   const [timeLeft, setTimeLeft] = useState(30);
 
@@ -17,56 +17,64 @@ export const useGameLogic = () => {
     publicVote: { used: false },
   });
 
+  // --- UNIFICADO: Lógica de carga de pregunta y mezcla ---
   useEffect(() => {
-    const q = questionsData.find(q => q.level === currentLevel);
-    setCurrentQuestion(q);
+    const baseQuestion = questionsData.find(q => q.level === currentLevel);
+    
+    if (baseQuestion) {
+      // 1. Inyectamos ID original para que el 50:50 no falle
+      const answersWithId = baseQuestion.answers.map((ans, idx) => ({
+        ...ans,
+        originalIndex: idx 
+      }));
+
+      // 2. MEZCLA REAL: Usamos una lógica de ordenamiento aleatorio más fuerte
+      const shuffled = [...answersWithId].sort(() => Math.random() - 0.5);
+
+      setCurrentQuestion({
+        ...baseQuestion,
+        answers: shuffled
+      });
+    }
+
+    // 3. Reseteamos todo para el nuevo nivel
     setSelectedAnswer(null);
     setHiddenAnswers([]);
     setGameState('playing');
-  }, [currentLevel]);
+    setTimeLeft(30); // El tiempo vuelve a 30 aquí
 
-  // Lógica del Temporizador
-useEffect(() => {
-  // Si el juego no está en modo 'playing', detenemos el reloj
-  if (gameState !== 'playing') return;
+  }, [currentLevel]); // Este es ahora el ÚNICO efecto que escucha al nivel
 
-  // Si el tiempo llega a 0, el jugador pierde
-  if (timeLeft === 0) {
-    setGameState('lost');
-    return;
-  }
 
-  // Intervalo de 1 segundo
-  const timer = setInterval(() => {
-    setTimeLeft((prev) => prev - 1);
-  }, 1000);
+  // Lógica del Temporizador (Este se queda igual, solo maneja el tic-tac)
+  useEffect(() => {
+    if (gameState !== 'playing') return;
+    if (timeLeft === 0) {
+      setGameState('lost');
+      return;
+    }
 
-  return () => clearInterval(timer); // Limpieza para evitar fugas de memoria
-}, [timeLeft, gameState]);
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
 
-// Resetear el timer cada vez que cambiamos de pregunta
-useEffect(() => {
-  const q = questionsData.find(q => q.level === currentLevel);
-  setCurrentQuestion(q);
-  setSelectedAnswer(null);
-  setHiddenAnswers([]);
-  setTimeLeft(30); // <--- RESET AL TIEMPO
-  setGameState('playing');
-}, [currentLevel]);
+    return () => clearInterval(timer);
+  }, [timeLeft, gameState]);
 
-  // DECLARACIÓN DE FUNCIONES
+
+  // --- FUNCIONES ---
   const closeLifelineModal = () => setActiveModal(null);
 
   const handleLifeline = (type) => {
     if (lifelines[type].used || gameState !== 'playing') return;
 
     if (type === 'fiftyFifty') {
-      const correctAnswerIndex = currentQuestion.answers.findIndex(a => a.correct);
-      const incorrectIndices = currentQuestion.answers
-        .map((_, index) => index)
-        .filter(index => index !== correctAnswerIndex);
+      const incorrectAnswers = currentQuestion.answers.filter(a => !a.correct);
+      const toHide = incorrectAnswers
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 2)
+        .map(a => a.originalIndex);
 
-      const toHide = incorrectIndices.sort(() => Math.random() - 0.5).slice(0, 2);
       setHiddenAnswers(toHide);
     }
 
@@ -81,7 +89,7 @@ useEffect(() => {
         remaining -= randomVote;
         return randomVote;
       });
-      votes[3] += remaining; 
+      votes[votes.length - 1] += remaining; 
 
       setPublicData(votes);
       setActiveModal('public');
@@ -95,7 +103,7 @@ useEffect(() => {
   };
 
   const handleAnswer = (answer) => {
-    if (gameState !== 'playing' || hiddenAnswers.includes(currentQuestion.answers.indexOf(answer))) return;
+    if (gameState !== 'playing') return;
     
     setSelectedAnswer(answer);
     setGameState('checking');
@@ -113,19 +121,9 @@ useEffect(() => {
     }, 2000);
   };
 
-  // RETORNO DE VALORES (Asegúrate de que coincidan con los nombres arriba)
   return { 
-    currentQuestion, 
-    currentLevel, 
-    selectedAnswer, 
-    gameState, 
-    handleAnswer,
-    lifelines,
-    handleLifeline,
-    hiddenAnswers,
-    activeModal, 
-    publicData,
-    closeLifelineModal,
-    timeLeft
+    currentQuestion, currentLevel, selectedAnswer, gameState, 
+    handleAnswer, lifelines, handleLifeline, hiddenAnswers,
+    activeModal, publicData, closeLifelineModal, timeLeft
   };
 };

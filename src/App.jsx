@@ -93,23 +93,29 @@ export default function App() {
 
         {/* Footer: Respuestas */}
         <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 max-w-5xl mx-auto w-full pb-4">
-          {currentQuestion.answers.map((ans, index) => {
-            const isHidden = hiddenAnswers.includes(index);
-            return (
-              <div key={index} className={isHidden ? "invisible pointer-events-none" : ""}>
-                <AnswerOption
-                  letter={['A', 'B', 'C', 'D'][index]}
-                  text={ans.text}
-                  status={
-                    selectedAnswer === ans 
-                    ? (gameState === 'checking' ? 'selected' : (ans.correct ? 'correct' : 'wrong'))
-                    : (gameState === 'lost' && ans.correct ? 'correct' : 'idle')
-                  }
-                  onClick={() => handleAnswer(ans)}
-                />
-              </div>
-            );
-          })}
+      {currentQuestion.answers.map((ans, index) => {
+  // Ahora comparamos contra el originalIndex que inyectamos en el hook
+  const isHidden = hiddenAnswers.includes(ans.originalIndex);
+  
+  return (
+    <div 
+      key={`${currentLevel}-${ans.text}`} // Key más estable
+      className={isHidden ? "invisible pointer-events-none" : ""}
+    >
+      <AnswerOption
+        letter={['A', 'B', 'C', 'D'][index]}
+        text={ans.text}
+        status={
+          // Usamos el texto para comparar la selección (más seguro)
+          selectedAnswer?.text === ans.text 
+          ? (gameState === 'checking' ? 'selected' : (ans.correct ? 'correct' : 'wrong'))
+          : (gameState === 'lost' && ans.correct ? 'correct' : 'idle')
+        }
+        onClick={() => handleAnswer(ans)}
+      />
+    </div>
+  );
+})}
         </div>
       </section>
 
