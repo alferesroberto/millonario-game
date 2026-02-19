@@ -1,16 +1,56 @@
-# React + Vite
+# 💰 Millonario React Edition
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una experiencia inmersiva basada en el famoso show televisivo "¿Quién quiere ser millonario?", construida con tecnologías web de última generación. Este proyecto es una **Single Page Application (SPA)** estática, optimizada para dispositivos móviles y diseñada con un enfoque en la experiencia de usuario (UX).
 
-Currently, two official plugins are available:
+![Logo del Proyecto](/public/logo.png) ## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **React 19** - Librería principal para la interfaz.
+* **Vite** - Entorno de desarrollo ultra rápido.
+* **Tailwind CSS 4** - Estilizado moderno y eficiente.
+* **Framer Motion** - Animaciones fluidas y transiciones de estado.
+* **Lucide React** - Iconografía limpia.
+* **Use-Sound** - Gestión de efectos sonoros y música de tensión.
 
-## React Compiler
+## ✨ Características Principales
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Curva de Dificultad Real:** 15 preguntas que escalan en complejidad.
+* **Sistema de Comodines (Lifelines):**
+    * **50:50:** Elimina dos opciones incorrectas al azar.
+    * **Llamada al amigo:** Un experto te da su opinión honesta.
+    * **Voto del Público:** Gráfica de barras basada en probabilidades según el nivel.
+* **Temporizador Dinámico:** 30 segundos de pura tensión con alertas visuales.
+* **Diseño Mobile-First:** Interfaz totalmente adaptativa con menús laterales para dispositivos táctiles.
+* **Estado de Juego Persistente:** Lógica centralizada mediante Custom Hooks.
 
-## Expanding the ESLint configuration
+## 🛠️ Instalación y Configuración
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Clona el repositorio:**
+    ```bash
+    git clone [https://github.com/tu-usuario/millonario-react.git](https://github.com/tu-usuario/millonario-react.git)
+    cd millonario-react
+    ```
+
+2.  **Instala las dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Inicia el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Construye para producción:**
+    ```bash
+    npm run build
+    ```
+
+## 📁 Estructura del Proyecto
+
+```text
+src/
+├── components/     # Componentes visuales (Timer, Modal, Pyramid)
+├── data/           # Archivos JSON de preguntas y premios
+├── features/       # Lógica específica (AnswerOption)
+├── hooks/          # Custom Hook useGameLogic.js (El cerebro del juego)
+└── App.jsx         # Layout principal y orquestador
