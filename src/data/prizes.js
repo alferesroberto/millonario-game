@@ -1,0 +1,17 @@
+export const prizeMoney = [
+  { id: 15, amount: "$ 1,000,000", safe: true },
+  { id: 14, amount: "$ 500,000", safe: false },
+  { id: 13, amount: "$ 250,000", safe: false },
+  { id: 12, amount: "$ 125,000", safe: false },
+  { id: 11, amount: "$ 64,000", safe: false },
+  { id: 10, amount: "$ 32,000", safe: true },
+  { id: 9, amount: "$ 16,000", safe: false },
+  { id: 8, amount: "$ 8,000", safe: false },
+  { id: 7, amount: "$ 4,000", safe: false },
+  { id: 6, amount: "$ 2,000", safe: false },
+  { id: 5, amount: "$ 1,000", safe: true },
+  { id: 4, amount: "$ 500", safe: false },
+  { id: 3, amount: "$ 300", safe: false },
+  { id: 2, amount: "$ 200", safe: false },
+  { id: 1, amount: "$ 100", safe: false },
+].reverse(); // Los ordenamos para que el 1 esté abajo

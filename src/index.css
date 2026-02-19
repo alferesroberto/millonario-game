@@ -1,0 +1,12 @@
+@import "tailwindcss";
+/* Opcional: Fuente moderna y variables de color personalizadas */
+:root {
+  --color-gold: #ffcc00;
+  --color-deep-blue: #020230;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-deep-blue);
+  font-family: 'Inter', sans-serif;
+}

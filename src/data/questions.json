@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "level": 1,
+    "question": "¿Cuál es el color que resulta de mezclar azul y amarillo?",
+    "answers": [
+      { "text": "Morado", "correct": false },
+      { "text": "Naranja", "correct": false },
+      { "text": "Verde", "correct": true },
+      { "text": "Gris", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "level": 2,
+    "question": "¿Cuántos días tiene un año bisiesto?",
+    "answers": [
+      { "text": "364", "correct": false },
+      { "text": "365", "correct": false },
+      { "text": "366", "correct": true },
+      { "text": "367", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "level": 3,
+    "question": "¿Qué planeta es conocido como el 'Planeta Rojo'?",
+    "answers": [
+      { "text": "Júpiter", "correct": false },
+      { "text": "Venus", "correct": false },
+      { "text": "Marte", "correct": true },
+      { "text": "Saturno", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "level": 4,
+    "question": "¿Cuál es el océano más grande del mundo?",
+    "answers": [
+      { "text": "Océano Atlántico", "correct": false },
+      { "text": "Océano Índico", "correct": false },
+      { "text": "Océano Pacífico", "correct": true },
+      { "text": "Océano Ártico", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "level": 5,
+    "question": "¿En qué país se encuentra la Torre Pisa?",
+    "answers": [
+      { "text": "Francia", "correct": false },
+      { "text": "España", "correct": false },
+      { "text": "Italia", "correct": true },
+      { "text": "Grecia", "correct": false }
+    ]
+  },
+  {
+    "id": 6,
+    "level": 6,
+    "question": "¿Quién pintó 'La última cena'?",
+    "answers": [
+      { "text": "Pablo Picasso", "correct": false },
+      { "text": "Vincent van Gogh", "correct": false },
+      { "text": "Leonardo da Vinci", "correct": true },
+      { "text": "Miguel Ángel", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "level": 7,
+    "question": "¿Cuál es el elemento químico representado por el símbolo 'Au'?",
+    "answers": [
+      { "text": "Plata", "correct": false },
+      { "text": "Cobre", "correct": false },
+      { "text": "Oro", "correct": true },
+      { "text": "Hierro", "correct": false }
+    ]
+  },
+  {
+    "id": 8,
+    "level": 8,
+    "question": "¿En qué año terminó la Segunda Guerra Mundial?",
+    "answers": [
+      { "text": "1918", "correct": false },
+      { "text": "1939", "correct": false },
+      { "text": "1945", "correct": true },
+      { "text": "1950", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "level": 9,
+    "question": "¿Cuál es el animal terrestre más veloz del mundo?",
+    "answers": [
+      { "text": "León", "correct": false },
+      { "text": "Gacela", "correct": false },
+      { "text": "Guepardo", "correct": true },
+      { "text": "Tigre", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "level": 10,
+    "question": "¿Cuál es el libro más vendido después de la Biblia?",
+    "answers": [
+      { "text": "El Código Da Vinci", "correct": false },
+      { "text": "Harry Potter", "correct": false },
+      { "text": "Don Quijote de la Mancha", "correct": true },
+      { "text": "El Principito", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "level": 11,
+    "question": "¿Qué gas absorben las plantas para realizar la fotosíntesis?",
+    "answers": [
+      { "text": "Oxígeno", "correct": false },
+      { "text": "Nitrógeno", "correct": false },
+      { "text": "Dióxido de carbono", "correct": true },
+      { "text": "Hidrógeno", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "level": 12,
+    "question": "¿Cuál es el río más largo del mundo?",
+    "answers": [
+      { "text": "Nilo", "correct": false },
+      { "text": "Misisipi", "correct": false },
+      { "text": "Amazonas", "correct": true },
+      { "text": "Yangtsé", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "level": 13,
+    "question": "¿En qué ciudad se encuentran los Jardines Colgantes, una de las maravillas antiguas?",
+    "answers": [
+      { "text": "Roma", "correct": false },
+      { "text": "Atenas", "correct": false },
+      { "text": "Babilonia", "correct": true },
+      { "text": "Egipto", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "level": 14,
+    "question": "¿Cuál es el único metal que es líquido a temperatura ambiente?",
+    "answers": [
+      { "text": "Magnesio", "correct": false },
+      { "text": "Bario", "correct": false },
+      { "text": "Mercurio", "correct": true },
+      { "text": "Litio", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "level": 15,
+    "question": "¿Quién fue el primer ser humano en viajar al espacio exterior?",
+    "answers": [
+      { "text": "Neil Armstrong", "correct": false },
+      { "text": "Buzz Aldrin", "correct": false },
+      { "text": "Yuri Gagarin", "correct": true },
+      { "text": "John Glenn", "correct": false }
+    ]
+  }
+]
